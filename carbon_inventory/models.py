@@ -33,7 +33,7 @@ class User(db.Model, UserMixin):
     g_auth_verify = db.Column(db.Boolean, default = False)
     token = db.Column(db.String, default = '', unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
-    # carbon = db.relationship('Carbon', backref = 'owner', lazy = True)
+    carbon = db.relationship('Carbon', backref = 'owner', lazy = True)
 
     def __init__(self, first_name, last_name, email, id = '', password = '', token = '', g_auth_verify = False):
         self.id = self.set_id()
