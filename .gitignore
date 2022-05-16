@@ -1,0 +1,6 @@
+capstone_env
+__pycache__
+.capstone_env
+migrations
+app.db
+.env
