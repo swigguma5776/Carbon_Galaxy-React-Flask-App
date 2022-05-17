@@ -22,7 +22,6 @@ def create_carbon(current_user_token):
 
     print(f"BIG TESTER: {current_user_token.token}")
 
-
     carbon = Carbon(website_url, carbon_per_webpage, carbon_per_year, green_energy, trees_needed, user_token = user_token)
 
     db.session.add(carbon)

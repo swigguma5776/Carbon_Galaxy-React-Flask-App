@@ -1,7 +1,7 @@
 from functools import wraps
 import secrets
 
-from flask import request, jsonify, json
+from flask import json, request, jsonify 
 
 from carbon_inventory.models import User
 import decimal

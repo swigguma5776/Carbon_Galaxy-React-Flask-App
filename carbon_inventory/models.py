@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate   
 import uuid  
 from datetime import date, datetime 
+from math import ceil 
 
 # add security for passwords 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -69,14 +70,24 @@ class Carbon(db.Model):
 
     # Changed some args to be default strings 
 
-    def __init__(self, website_url, carbon_per_webpage, carbon_per_year, green_energy, trees_needed, user_token, id = ''):
+    def __init__(self, website_url, carbon_per_webpage, green_energy, user_token, id = ''):
         self.id = self.set_id()
         self.website_url = website_url
         self.carbon_per_webpage = carbon_per_webpage
-        self.carbon_per_year = carbon_per_year
+        self.carbon_per_year = self.carbon_year()
         self.green_energy = green_energy
-        self.trees_needed = trees_needed
+        self.trees_needed = self.trees_calc()
         self.user_token = user_token 
+
+    
+    def carbon_year(self):
+        self.carbon_per_year = "{:.2f}".format(self.carbon_per_webpage * 100000 * 12)
+
+
+    def trees_calc(self):
+        self.trees_needed = ceil(self.carbon_per_year / 20000)
+
+
 
     def __repr__(self):
         return f"The following carbon data has been added for url: {self.website_url}"
