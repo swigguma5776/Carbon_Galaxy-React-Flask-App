@@ -64,7 +64,7 @@ class Carbon(db.Model):
     website_url = db.Column(db.String(150), nullable = False)
     carbon_per_webpage = db.Column(db.Numeric(precision=10, scale=2), nullable = False)
     carbon_per_year = db.Column(db.Numeric(precision=10, scale=2), nullable = False)
-    green_energy = db.Column(db.Boolean, default = False)
+    green_energy = db.Column(db.String(150), default = False)
     trees_needed = db.Column(db.Integer, nullable = False)
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
