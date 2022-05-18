@@ -15,14 +15,12 @@ def getdata(current_user_token):
 def create_carbon(current_user_token):
     website_url = request.json['website_url']
     carbon_per_webpage = request.json['carbon_per_webpage']
-    carbon_per_year = request.json['carbon_per_year']
     green_energy = request.json['green_energy']
-    trees_needed = request.json['trees_needed']
     user_token = current_user_token.token 
 
     print(f"BIG TESTER: {current_user_token.token}")
 
-    carbon = Carbon(website_url, carbon_per_webpage, carbon_per_year, green_energy, trees_needed, user_token = user_token)
+    carbon = Carbon(website_url, carbon_per_webpage, green_energy, user_token = user_token)
 
     db.session.add(carbon)
     db.session.commit() 
@@ -64,9 +62,7 @@ def update_carbon(current_user_token,id):
 
     carbon.website_url = request.json['website_url']
     carbon.carbon_per_webpage = request.json['carbon_per_webpage']
-    carbon.carbon_per_year = request.json['carbon_per_year']
     carbon.green_energy = request.json['green_energy']
-    carbon.trees_needed = request.json['trees_needed']
     carbon.user_token = current_user_token.token 
 
     db.session.commit()
