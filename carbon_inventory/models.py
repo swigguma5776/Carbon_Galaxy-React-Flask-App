@@ -74,19 +74,19 @@ class Carbon(db.Model):
         self.id = self.set_id()
         self.website_url = website_url
         self.carbon_per_webpage = carbon_per_webpage
-        self.carbon_per_year = self.carbon_year()
+        self.carbon_per_year = self.carbon_year(carbon_per_webpage)
         self.green_energy = green_energy
-        self.trees_needed = self.trees_calc()
+        self.trees_needed = self.trees_calc(carbon_per_webpage)
         self.user_token = user_token 
 
     
-    def carbon_year(self):
-        self.carbon_per_year = float("{:.2f}".format(float(self.carbon_per_webpage) * 100000 * 12))
+    def carbon_year(self, carbon_per_webpage):
+        self.carbon_per_year = float("{:.2f}".format(float(carbon_per_webpage) * 100000 * 12))
         print(self.carbon_per_year)
 
 
-    def trees_calc(self):
-        self.trees_needed = ceil(float("{:.2f}".format(float(self.carbon_per_webpage) * 100000 * 12)) / 20000)
+    def trees_calc(self, carbon_per_webpage):
+        self.trees_needed = ceil(float("{:.2f}".format(float(carbon_per_webpage) * 100000 * 12)) / 20000)
         print(self.trees_needed)
 
 
