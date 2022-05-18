@@ -81,7 +81,7 @@ class Carbon(db.Model):
 
     
     def carbon_year(self):
-        self.carbon_per_year = "{:.2f}".format(self.carbon_per_webpage * 100000 * 12)
+        self.carbon_per_year = "{:.2f}".format(float(self.carbon_per_webpage) * 100000 * 12)
 
 
     def trees_calc(self):
