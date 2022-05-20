@@ -1,0 +1,14 @@
+.description{
+    width: 80%; 
+    margin-right: auto;
+    margin-left: auto; 
+    margin-top: 7vh; 
+    margin-bottom: 7vh; 
+    text-align: center; 
+}
+
+#carbon-description{
+    color: white;
+    font-family: Arial Narrow; 
+    text-align: center; 
+}
